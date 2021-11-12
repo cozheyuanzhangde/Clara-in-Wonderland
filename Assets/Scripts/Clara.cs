@@ -46,7 +46,7 @@ public class Clara : MonoBehaviour
         thirst_bar.SetThirst(current_thirst);
         inventory = new Inventory();
         inventoryUI.UpdateInventory(inventory);
-        inventory.AddItem(new Item { itemName = Item.ItemName.EmptyJar, number = 1 });
+        //inventory.AddItem(new Item { itemName = Item.ItemName.EmptyJar, number = 1 });
         MessageBox.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
