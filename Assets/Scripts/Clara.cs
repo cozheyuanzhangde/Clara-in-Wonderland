@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Clara : MonoBehaviour
 {
@@ -55,7 +56,7 @@ public class Clara : MonoBehaviour
 
     private void SetMessageBoxAndSetActive(string message)
     {
-        MessageBoxText.GetComponent<Text>().text = message;
+        MessageBoxText.GetComponent<TextMeshProUGUI>().SetText(message);
         MessageBox.SetActive(true);
     }
 
@@ -80,7 +81,14 @@ public class Clara : MonoBehaviour
         {
             if(InWater == true)
             {
-                inventory.UseItem(new Item { itemName = Item.ItemName.EmptyJar, number = 1 }, "fill_water");
+                if (inventory.HasItem(new Item { itemName = Item.ItemName.EmptyJar, number = 1 }))
+                {
+                    inventory.UseItem(new Item { itemName = Item.ItemName.EmptyJar, number = 1 }, "fill_water");
+                    if (!inventory.HasItem(new Item { itemName = Item.ItemName.EmptyJar, number = 1 }))
+                    {
+                        MessageBox.SetActive(false);
+                    }
+                }
             }
         }
     }
