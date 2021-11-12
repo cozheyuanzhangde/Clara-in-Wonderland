@@ -70,9 +70,8 @@ public class Clara : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E)){
-            /*
-            ThirdPersonCamera.GetComponent<vThirdPersonCamera>().lockCamera = !ThirdPersonCamera.GetComponent<vThirdPersonCamera>().lockCamera;
-            if(ThirdPersonCamera.GetComponent<vThirdPersonCamera>().lockCamera == true)
+            ThirdPersonCamera.GetComponent<Invector.vCamera.vThirdPersonCamera>().LockCamera = !ThirdPersonCamera.GetComponent<Invector.vCamera.vThirdPersonCamera>().LockCamera;
+            if(ThirdPersonCamera.GetComponent<Invector.vCamera.vThirdPersonCamera>().LockCamera == true)
             {
                 SelectMode.SetActive(true);
                 Cursor.lockState = CursorLockMode.None;
@@ -84,7 +83,6 @@ public class Clara : MonoBehaviour
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
             }
-            */
         }
         if (Input.GetKeyDown(KeyCode.F))
         {
