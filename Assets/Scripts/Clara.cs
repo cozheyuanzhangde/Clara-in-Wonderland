@@ -16,20 +16,26 @@ public class Clara : MonoBehaviour
     public HealthBar health_bar;
     public HungerBar hunger_bar;
     public ThirstBar thirst_bar;
+
     private Inventory inventory;
 
     [SerializeField] private InventoryUI inventoryUI;
 
-    private Camera Camera3rd;
     private Item ItemToPickUp = null;
     private bool InWater = false;
     private GameObject ItemToDestory = null;
     private GameObject MessageBox;
     private GameObject MessageBoxText;
+    private GameObject ThirdPersonCamera;
+    private GameObject SelectMode;
     // Start is called before the first frame update
     void Start()
     {
-        Camera3rd = Camera.current;
+        ThirdPersonCamera = GameObject.Find("vThirdPersonCamera");
+        SelectMode = GameObject.Find("SelectModePanel");
+        MessageBox = GameObject.Find("GameMessage");
+        MessageBoxText = GameObject.Find("GameMessageText");
+        SelectMode.SetActive(false);
         health_bar.SetMaxHealth(max_health);
         hunger_bar.SetMaxHunger(max_hunger);
         thirst_bar.SetMaxThirst(max_thirst);
@@ -40,10 +46,10 @@ public class Clara : MonoBehaviour
         thirst_bar.SetThirst(current_thirst);
         inventory = new Inventory();
         inventoryUI.UpdateInventory(inventory);
-        MessageBox = GameObject.Find("GameMessage");
-        MessageBoxText = GameObject.Find("GameMessageText");
         inventory.AddItem(new Item { itemName = Item.ItemName.EmptyJar, number = 1 });
         MessageBox.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     private void FixedUpdate()
@@ -63,6 +69,23 @@ public class Clara : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.E)){
+            /*
+            ThirdPersonCamera.GetComponent<vThirdPersonCamera>().lockCamera = !ThirdPersonCamera.GetComponent<vThirdPersonCamera>().lockCamera;
+            if(ThirdPersonCamera.GetComponent<vThirdPersonCamera>().lockCamera == true)
+            {
+                SelectMode.SetActive(true);
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
+            else
+            {
+                SelectMode.SetActive(false);
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
+            */
+        }
         if (Input.GetKeyDown(KeyCode.F))
         {
             if(ItemToPickUp != null)
