@@ -48,6 +48,11 @@ public class Inventory
 
     public void DropItem(Item item)
     {
+        if (item.itemName == Item.ItemName.MetalSword)
+        {
+            GameObject MeleeWeaponMetalSword = GameObject.Find("MeleeWeaponMetalSword");
+            MeleeWeaponMetalSword.SetActive(false);
+        }
         RemoveItem(item);
         items_spawner.GetComponent<SpawnPrefabs>().SpawnThis(item);
     }

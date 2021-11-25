@@ -35,6 +35,7 @@ public class Clara : MonoBehaviour
     {
         ThirdPersonCamera = GameObject.Find("vThirdPersonCamera");
         MeleeWeaponMetalSword = GameObject.Find("MeleeWeaponMetalSword");
+        MeleeWeaponMetalSword.SetActive(false);
         SelectMode = GameObject.Find("SelectModePanel");
         MessageBox = GameObject.Find("GameMessage");
         MessageBoxText = GameObject.Find("GameMessageText");
@@ -93,7 +94,8 @@ public class Clara : MonoBehaviour
             {
                 if (ItemToPickUp.itemName == Item.ItemName.MetalSword)
                 {
-                    GetComponent<Invector.vMelee.vMeleeManager>().leftWeapon = MeleeWeaponMetalSword.GetComponent<Invector.vMelee.vMeleeWeapon>();
+                    MeleeWeaponMetalSword.SetActive(true);
+                    //GetComponent<Invector.vMelee.vMeleeManager>().rightWeapon = MeleeWeaponMetalSword.GetComponent<Invector.vMelee.vMeleeWeapon>();
                 }
                 inventory.AddItem(ItemToPickUp);
                 ItemToPickUp = null;
