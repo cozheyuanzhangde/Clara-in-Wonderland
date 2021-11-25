@@ -38923,12 +38923,12 @@ MonoBehaviour:
   hitProperties:
     hitDamageTags:
     - Enemy
-    useRecoil: 1
+    useRecoil: 0
     drawRecoilGizmos: 0
     recoilRange: 100
     hitRecoilLayer:
       serializedVersion: 2
-      m_Bits: 1
+      m_Bits: 0
   leftWeapon: {fileID: 0}
   rightWeapon: {fileID: 0}
   onDamageHit:
@@ -39507,7 +39507,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openCloseEvents: 0
-  openCloseWindow: 0
+  openCloseWindow: 1
   selectedToolbar: 2
   OnDoAction:
     m_PersistentCalls:
@@ -39605,8 +39605,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openCloseEvents: 0
-  openCloseWindow: 0
-  selectedToolbar: 0
+  openCloseWindow: 1
+  selectedToolbar: 2
   upDownAxis: {x: 1, y: 0, z: 0}
   strafeHeadWeight: 0.8
   strafeBodyWeight: 0.8
@@ -40120,7 +40120,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openCloseEvents: 1
   openCloseWindow: 1
-  selectedToolbar: 5
+  selectedToolbar: 1
   _isDead: 0
   _currentHealth: 0
   isImmortal: 0
@@ -52657,7 +52657,7 @@ MonoBehaviour:
   joystickSensitivity: 20
   cullingLayer:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 256
   clipPlaneMargin: 0
   checkHeightRadius: 0
   showGizmos: 0
