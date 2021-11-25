@@ -38994,7 +38994,7 @@ MonoBehaviour:
     hitRecoilLayer:
       serializedVersion: 2
       m_Bits: 1
-  leftWeapon: {fileID: 0}
+  leftWeapon: {fileID: 306699519762075278, guid: a1f8427ef49976b47a3ca3c7dc9da719, type: 3}
   rightWeapon: {fileID: 0}
   onDamageHit:
     m_PersistentCalls:
