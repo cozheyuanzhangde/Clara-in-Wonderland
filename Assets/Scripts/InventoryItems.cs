@@ -11,6 +11,8 @@ public class InventoryItems : MonoBehaviour
         all = this;
     }
 
+    public Sprite default_img;
     public Sprite empty_jar;
     public Sprite water_jar;
+    public Sprite metal_sword;
 }

@@ -8,6 +8,7 @@ public class Item
     {
         EmptyJar,
         WaterJar,
+        MetalSword,
     }
 
     public ItemName itemName;
@@ -17,9 +18,10 @@ public class Item
     {
         switch (itemName)
         {
-            default: return InventoryItems.all.empty_jar; //TODO: change this to a default sprite
+            default: return InventoryItems.all.default_img; //TODO: change this to a default sprite
             case ItemName.EmptyJar: return InventoryItems.all.empty_jar;
             case ItemName.WaterJar: return InventoryItems.all.water_jar;
+            case ItemName.MetalSword: return InventoryItems.all.metal_sword;
         }
     }
 
@@ -30,6 +32,7 @@ public class Item
             default: return false;
             case ItemName.EmptyJar: return true;
             case ItemName.WaterJar: return true;
+            case ItemName.MetalSword: return false;
         }
     }
 }

@@ -12,6 +12,7 @@ public class Clara : MonoBehaviour
     public float current_hunger;
     public float max_thirst = 100;
     public float current_thirst;
+
     
     public HealthBar health_bar;
     public HungerBar hunger_bar;
@@ -27,11 +28,13 @@ public class Clara : MonoBehaviour
     private GameObject MessageBox;
     private GameObject MessageBoxText;
     private GameObject ThirdPersonCamera;
+    private GameObject MeleeWeaponMetalSword;
     private GameObject SelectMode;
     // Start is called before the first frame update
     void Start()
     {
         ThirdPersonCamera = GameObject.Find("vThirdPersonCamera");
+        MeleeWeaponMetalSword = GameObject.Find("MeleeWeaponMetalSword");
         SelectMode = GameObject.Find("SelectModePanel");
         MessageBox = GameObject.Find("GameMessage");
         MessageBoxText = GameObject.Find("GameMessageText");
@@ -88,6 +91,10 @@ public class Clara : MonoBehaviour
         {
             if(ItemToPickUp != null)
             {
+                if (ItemToPickUp.itemName == Item.ItemName.MetalSword)
+                {
+                    GetComponent<Invector.vMelee.vMeleeManager>().leftWeapon = MeleeWeaponMetalSword.GetComponent<Invector.vMelee.vMeleeWeapon>();
+                }
                 inventory.AddItem(ItemToPickUp);
                 ItemToPickUp = null;
                 if(ItemToDestory != null)
@@ -148,6 +155,12 @@ public class Clara : MonoBehaviour
             ItemToPickUp = new Item { itemName = Item.ItemName.EmptyJar, number = 1 };
             ItemToDestory = other.gameObject;
         }
+        if (other.name.Contains("Metal Sword"))
+        {
+            SetMessageBoxAndSetActive("Press F to pick up");
+            ItemToPickUp = new Item { itemName = Item.ItemName.MetalSword, number = 1 };
+            ItemToDestory = other.gameObject;
+        }
         if (other.name.Contains("Water"))
         {
             if (inventory.HasItem(new Item { itemName = Item.ItemName.EmptyJar, number = 1 }))
@@ -161,6 +174,12 @@ public class Clara : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         if (other.name.Contains("Jar_Empty"))
+        {
+            MessageBox.SetActive(false);
+            ItemToPickUp = null;
+            ItemToDestory = null;
+        }
+        if (other.name.Contains("Metal Sword"))
         {
             MessageBox.SetActive(false);
             ItemToPickUp = null;
