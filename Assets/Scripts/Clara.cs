@@ -193,6 +193,18 @@ public class Clara : MonoBehaviour
             ItemToPickUp = null;
             ItemToDestory = null;
         }
+        if (other.name.Contains("Jar_Full_Water"))
+        {
+            MessageBox.SetActive(false);
+            ItemToPickUp = null;
+            ItemToDestory = null;
+        }
+        if (other.name.Contains("Jar_Full_Blood"))
+        {
+            MessageBox.SetActive(false);
+            ItemToPickUp = null;
+            ItemToDestory = null;
+        }
         if (other.name.Contains("Metal Sword"))
         {
             MessageBox.SetActive(false);
