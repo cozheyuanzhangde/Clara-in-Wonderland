@@ -109,6 +109,7 @@ public class Inventory
                     case Item.ItemName.WaterJar:
                         PlayerClara.GetComponent<Clara>().ChangeThirstByDiff(25);
                         RemoveItem(item);
+                        AddItem(new Item { itemName = Item.ItemName.EmptyJar, number = 1 });
                         break;
                 }
                 break;
