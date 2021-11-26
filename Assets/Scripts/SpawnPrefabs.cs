@@ -6,6 +6,8 @@ public class SpawnPrefabs : MonoBehaviour
 {
     private GameObject PlayerClara;
     public GameObject empty_jar_prefab;
+    public GameObject water_jar_prefab;
+    public GameObject blood_jar_prefab;
     public GameObject metal_sword_prefab;
     // Start is called before the first frame update
     void Start()
@@ -14,6 +16,10 @@ public class SpawnPrefabs : MonoBehaviour
 
         empty_jar_prefab.GetComponent<MeshCollider>().convex = true;
         empty_jar_prefab.GetComponent<MeshCollider>().isTrigger = true;
+        water_jar_prefab.GetComponent<MeshCollider>().convex = true;
+        water_jar_prefab.GetComponent<MeshCollider>().isTrigger = true;
+        blood_jar_prefab.GetComponent<MeshCollider>().convex = true;
+        blood_jar_prefab.GetComponent<MeshCollider>().isTrigger = true;
     }
 
     // Update is called once per frame
@@ -31,7 +37,10 @@ public class SpawnPrefabs : MonoBehaviour
                 Instantiate(empty_jar_prefab, PlayerClara.transform.position, Quaternion.Euler(new Vector3(-90,0,0)));
                 break;
             case Item.ItemName.WaterJar:
-                Instantiate(empty_jar_prefab, PlayerClara.transform.position, Quaternion.Euler(new Vector3(-90, 0, 0)));
+                Instantiate(water_jar_prefab, PlayerClara.transform.position, Quaternion.Euler(new Vector3(-90, 0, 0)));
+                break;
+            case Item.ItemName.BloodJar:
+                Instantiate(blood_jar_prefab, PlayerClara.transform.position, Quaternion.Euler(new Vector3(-90, 0, 0)));
                 break;
             case Item.ItemName.MetalSword:
                 GameObject MetalSwordSpawned = Instantiate(metal_sword_prefab, PlayerClara.transform.position + new Vector3(0, 0.02f, 0), Quaternion.Euler(new Vector3(-90, 0, 0)));
