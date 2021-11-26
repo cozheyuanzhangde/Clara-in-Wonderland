@@ -123,30 +123,30 @@ public class Clara : MonoBehaviour
         }
     }
 
-    public void ChangeHealthByDiff(int diff)
+    public void ChangeHealthByDiff(float diff)
     {
         current_health += diff;
-        hunger_bar.SetHunger(current_health);
+        health_bar.SetHealth(current_health);
     }
 
-    public void ChangeHungerByDiff(int diff)
+    public void ChangeHungerByDiff(float diff)
     {
         current_hunger += diff;
         hunger_bar.SetHunger(current_hunger);
     }
 
-    public void ChangeThirstByDiff(int diff)
+    public void ChangeThirstByDiff(float diff)
     {
         current_thirst += diff;
-        hunger_bar.SetHunger(current_thirst);
+        thirst_bar.SetThirst(current_thirst);
     }
 
-    /*
+    
     private void OnTriggerEnter(Collider other)
     {
-      
+        
     }
-    */
+    
 
 
     private void OnTriggerStay(Collider other)
