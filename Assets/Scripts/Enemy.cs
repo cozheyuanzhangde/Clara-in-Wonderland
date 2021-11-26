@@ -4,27 +4,33 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public float max_health = 50;
-    public float current_health = 50;
-    public float hit_damage = 10;
+    public float max_health;
+    public float current_health;
+    private Animator EnemyAnimator;
 
-    GameObject Clara;
+    //GameObject Clara;
 
     void Start()
     {
-        Clara = GameObject.Find("Clara");
+        //Clara = GameObject.Find("Clara");
+        EnemyAnimator = GetComponent<Animator>();
+        max_health = 50.0f;
+        current_health = max_health;
     }
 
-    public void Attack()
+    private void OnTriggerEnter(Collider other)
     {
-        Clara.GetComponent<Clara>().ChangeHealthByDiff(-10.0f);
+        if (other.name == "Metal Sword")
+        {
+            current_health -= 15.0f;
+        }
     }
 
     private void Update()
     {
         if(current_health <= 0.0f)
         {
-            Destroy(this);
+            Destroy(transform.gameObject);
         }
     }
 }

@@ -2532,7 +2532,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   max_health: 50
   current_health: 50
-  hit_damage: 10
 --- !u!136 &91574999
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2541,7 +2540,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 91574996}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 1
@@ -10403,7 +10402,6 @@ GameObject:
   m_Component:
   - component: {fileID: 391911701}
   - component: {fileID: 391911702}
-  - component: {fileID: 391911703}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -10440,18 +10438,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1372724032}
---- !u!114 &391911703
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 391911700}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 780e631921e0c1b4d8415c61e03a6e0d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &393549242
 GameObject:
   m_ObjectHideFlags: 0
