@@ -21198,6 +21198,7 @@ MonoBehaviour:
   default_img: {fileID: 21300000, guid: bd559740d6a5dd44baf185138c20f341, type: 3}
   empty_jar: {fileID: 21300000, guid: 2239697807b7eae4ba48c7af144acbc8, type: 3}
   water_jar: {fileID: 21300000, guid: 1283cda44197d3e438a0240b90d8e647, type: 3}
+  blood_jar: {fileID: 21300000, guid: 6d0174b5ce616354d9f0d020f11de4b5, type: 3}
   metal_sword: {fileID: 21300000, guid: 51f953910ca28fc44b70d87102eb0ccb, type: 3}
 --- !u!4 &726616026
 Transform:
@@ -29982,6 +29983,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   empty_jar_prefab: {fileID: 3240652757347261457, guid: 4e50b9f00a96eb744a04921c3be28bbd, type: 3}
+  water_jar_prefab: {fileID: 1345068425825028488, guid: fee4ddc8586ae674b80d3d01aad27398, type: 3}
+  blood_jar_prefab: {fileID: 1345068425825028488, guid: c9d05059cee33364ab737e2820e52803, type: 3}
   metal_sword_prefab: {fileID: 1220633678843950, guid: 944fc80616e7ee844bc7a8f312cd5b6a, type: 3}
 --- !u!4 &1074036935
 Transform:
@@ -52960,7 +52963,7 @@ MonoBehaviour:
   joystickSensitivity: 20
   cullingLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 0
   clipPlaneMargin: 0
   checkHeightRadius: 0
   showGizmos: 0
