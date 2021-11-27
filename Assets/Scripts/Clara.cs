@@ -29,6 +29,7 @@ public class Clara : MonoBehaviour
     private GameObject ThirdPersonCamera;
     private GameObject MeleeWeaponMetalSword;
     private GameObject SelectMode;
+    private GameObject InGameMenu;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +39,8 @@ public class Clara : MonoBehaviour
         SelectMode = GameObject.Find("SelectModePanel");
         MessageBox = GameObject.Find("GameMessage");
         MessageBoxText = GameObject.Find("GameMessageText");
+        InGameMenu = GameObject.Find("InGameMenu");
+        InGameMenu.SetActive(false);
         SelectMode.SetActive(false);
         health_bar.SetMaxHealth(max_health);
         hunger_bar.SetMaxHunger(max_hunger);
@@ -57,10 +60,26 @@ public class Clara : MonoBehaviour
 
     private void FixedUpdate()
     {
-        current_hunger -= 0.001f;
-        current_thirst -= 0.001f;
-        hunger_bar.SetHunger(current_hunger);
-        thirst_bar.SetThirst(current_thirst);
+        if (current_hunger > 0)
+        {
+            ChangeHungerByDiff(-0.005f);
+        }
+        if (current_thirst > 0)
+        {
+            ChangeThirstByDiff(-0.005f);
+        }
+        if (current_hunger <= 0.005f)
+        {
+            ChangeHealthByDiff(-0.01f);
+        }
+        if (current_thirst <= 0.005f)
+        {
+            ChangeHealthByDiff(-0.01f);
+        }
+        if ((current_hunger > 85) && (current_thirst > 85))
+        {
+            ChangeHealthByDiff(0.005f);
+        }
     }
 
     private void SetMessageBoxAndSetActive(string message)
@@ -72,6 +91,12 @@ public class Clara : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            Time.timeScale = 0;
+            InGameMenu.SetActive(true);
+        }
         if (Input.GetKeyDown(KeyCode.E)){
             ThirdPersonCamera.GetComponent<Invector.vCamera.vThirdPersonCamera>().LockCamera = !ThirdPersonCamera.GetComponent<Invector.vCamera.vThirdPersonCamera>().LockCamera;
             if(ThirdPersonCamera.GetComponent<Invector.vCamera.vThirdPersonCamera>().LockCamera == true)
@@ -125,18 +150,42 @@ public class Clara : MonoBehaviour
     public void ChangeHealthByDiff(float diff)
     {
         current_health += diff;
+        if (current_health > max_health)
+        {
+            current_health = max_health;
+        }
+        if (current_health < 0)
+        {
+            current_health = 0;
+        }
         health_bar.SetHealth(current_health);
     }
 
     public void ChangeHungerByDiff(float diff)
     {
         current_hunger += diff;
+        if (current_hunger > max_hunger)
+        {
+            current_hunger = max_hunger;
+        }
+        if (current_hunger < 0)
+        {
+            current_hunger = 0;
+        }
         hunger_bar.SetHunger(current_hunger);
     }
 
     public void ChangeThirstByDiff(float diff)
     {
         current_thirst += diff;
+        if (current_thirst > max_thirst)
+        {
+            current_thirst = max_thirst;
+        }
+        if (current_thirst < 0)
+        {
+            current_thirst = 0;
+        }
         thirst_bar.SetThirst(current_thirst);
     }
 
