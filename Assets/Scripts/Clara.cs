@@ -30,9 +30,11 @@ public class Clara : MonoBehaviour
     private GameObject MeleeWeaponMetalSword;
     private GameObject SelectMode;
     private GameObject InGameMenu;
+    private GameObject InGameMenuDeathInfo;
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1;
         ThirdPersonCamera = GameObject.Find("vThirdPersonCamera");
         MeleeWeaponMetalSword = GameObject.Find("MeleeWeaponMetalSword");
         MeleeWeaponMetalSword.SetActive(false);
@@ -40,6 +42,8 @@ public class Clara : MonoBehaviour
         MessageBox = GameObject.Find("GameMessage");
         MessageBoxText = GameObject.Find("GameMessageText");
         InGameMenu = GameObject.Find("InGameMenu");
+        InGameMenuDeathInfo = GameObject.Find("InGameMenuDeathInfo");
+        InGameMenuDeathInfo.SetActive(false);
         InGameMenu.SetActive(false);
         SelectMode.SetActive(false);
         health_bar.SetMaxHealth(max_health);
@@ -60,6 +64,11 @@ public class Clara : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (current_health <= 0)
+        {
+            InGameMenuDeathInfo.SetActive(true);
+            GetComponent<Animator>().SetBool("isDead", true);
+        }
         if (current_hunger > 0)
         {
             ChangeHungerByDiff(-0.005f);

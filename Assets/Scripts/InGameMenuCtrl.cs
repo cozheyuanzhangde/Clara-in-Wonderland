@@ -17,4 +17,9 @@ public class InGameMenuCtrl : MonoBehaviour
     {
         SceneManager.LoadScene("Menu");
     }
+
+    public void ClickTryAgain()
+    {
+        SceneManager.LoadScene("World1");
+    }
 }
