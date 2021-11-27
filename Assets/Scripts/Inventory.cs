@@ -107,7 +107,7 @@ public class Inventory
                 {
                     default: break;
                     case Item.ItemName.WaterJar:
-                        PlayerClara.GetComponent<Clara>().ChangeThirstByDiff(50);
+                        PlayerClara.GetComponent<Clara>().ChangeThirstByDiff(30);
                         RemoveItem(item);
                         AddItem(new Item { itemName = Item.ItemName.EmptyJar, number = 1 });
                         break;
@@ -115,6 +115,10 @@ public class Inventory
                         PlayerClara.GetComponent<Clara>().ChangeHealthByDiff(50);
                         RemoveItem(item);
                         AddItem(new Item { itemName = Item.ItemName.EmptyJar, number = 1 });
+                        break;
+                    case Item.ItemName.SlimeMeat:
+                        PlayerClara.GetComponent<Clara>().ChangeHungerByDiff(30);
+                        RemoveItem(item);
                         break;
                 }
                 break;

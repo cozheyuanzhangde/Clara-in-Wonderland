@@ -13,7 +13,6 @@ public class Clara : MonoBehaviour
     public float max_thirst = 100;
     public float current_thirst;
 
-    
     public HealthBar health_bar;
     public HungerBar hunger_bar;
     public ThirstBar thirst_bar;
@@ -175,6 +174,12 @@ public class Clara : MonoBehaviour
             ItemToPickUp = new Item { itemName = Item.ItemName.MetalSword, number = 1 };
             ItemToDestory = other.gameObject;
         }
+        if (other.name.Contains("Slime_Meat"))
+        {
+            SetMessageBoxAndSetActive("Press F to pick up");
+            ItemToPickUp = new Item { itemName = Item.ItemName.SlimeMeat, number = 1 };
+            ItemToDestory = other.gameObject;
+        }
         if (other.name.Contains("Water"))
         {
             if (inventory.HasItem(new Item { itemName = Item.ItemName.EmptyJar, number = 1 }))
@@ -206,6 +211,12 @@ public class Clara : MonoBehaviour
             ItemToDestory = null;
         }
         if (other.name.Contains("Metal Sword"))
+        {
+            MessageBox.SetActive(false);
+            ItemToPickUp = null;
+            ItemToDestory = null;
+        }
+        if (other.name.Contains("Slime_Meat"))
         {
             MessageBox.SetActive(false);
             ItemToPickUp = null;

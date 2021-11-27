@@ -10,6 +10,7 @@ public class Item
         WaterJar,
         BloodJar,
         MetalSword,
+        SlimeMeat,
     }
 
     public ItemName itemName;
@@ -24,6 +25,7 @@ public class Item
             case ItemName.WaterJar: return InventoryItems.all.water_jar;
             case ItemName.BloodJar: return InventoryItems.all.blood_jar;
             case ItemName.MetalSword: return InventoryItems.all.metal_sword;
+            case ItemName.SlimeMeat: return InventoryItems.all.slime_meat;
         }
     }
 
@@ -36,6 +38,7 @@ public class Item
             case ItemName.WaterJar: return true;
             case ItemName.BloodJar: return true;
             case ItemName.MetalSword: return false;
+            case ItemName.SlimeMeat: return true;
         }
     }
 }

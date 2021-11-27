@@ -6,15 +6,13 @@ public class Enemy : MonoBehaviour
 {
     public float max_health;
     public float current_health;
-    private Animator EnemyAnimator;
     GameObject items_spawner;
 
-    //GameObject Clara;
+    GameObject Clara;
 
     void Start()
     {
-        //Clara = GameObject.Find("Clara");
-        EnemyAnimator = GetComponent<Animator>();
+        Clara = GameObject.Find("Clara");
         items_spawner = GameObject.Find("ItemsSpawner");
         max_health = 50.0f;
         current_health = max_health;
@@ -24,15 +22,26 @@ public class Enemy : MonoBehaviour
     {
         if (other.name == "Metal Sword")
         {
-            current_health -= 10.0f;
+            bool attackA = Clara.GetComponent<Invector.vCharacterController.vMeleeCombatInput>().animator.GetCurrentAnimatorStateInfo(Clara.GetComponent<Invector.vCharacterController.vMeleeCombatInput>().animator.GetLayerIndex("FullBody")).IsName("A");
+            bool attackB = Clara.GetComponent<Invector.vCharacterController.vMeleeCombatInput>().animator.GetCurrentAnimatorStateInfo(Clara.GetComponent<Invector.vCharacterController.vMeleeCombatInput>().animator.GetLayerIndex("FullBody")).IsName("B");
+            bool attackC = Clara.GetComponent<Invector.vCharacterController.vMeleeCombatInput>().animator.GetCurrentAnimatorStateInfo(Clara.GetComponent<Invector.vCharacterController.vMeleeCombatInput>().animator.GetLayerIndex("FullBody")).IsName("C");
+            Debug.Log(attackA);
+            Debug.Log(attackB);
+            Debug.Log(attackC);
+            if (attackA || attackB || attackC)
+            {
+                current_health -= 20.0f;
+            }
+            
         }
     }
 
     private void Update()
     {
-        if(current_health <= 0.0f)
+        if (current_health <= 0.0f)
         {
-            items_spawner.GetComponent<SpawnPrefabs>().SpawnThis(new Item { itemName = Item.ItemName.BloodJar, number = 1 });
+            //items_spawner.GetComponent<SpawnPrefabs>().SpawnThis(new Item { itemName = Item.ItemName.BloodJar, number = 1 });
+            items_spawner.GetComponent<SpawnPrefabs>().SpawnThis(new Item { itemName = Item.ItemName.SlimeMeat, number = 1 });
             Destroy(transform.gameObject);
         }
     }

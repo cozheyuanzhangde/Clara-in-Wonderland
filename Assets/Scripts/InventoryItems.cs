@@ -16,4 +16,5 @@ public class InventoryItems : MonoBehaviour
     public Sprite water_jar;
     public Sprite blood_jar;
     public Sprite metal_sword;
+    public Sprite slime_meat;
 }
