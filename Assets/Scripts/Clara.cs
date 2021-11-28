@@ -66,8 +66,10 @@ public class Clara : MonoBehaviour
     {
         if (current_health <= 0)
         {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            GetComponent<Invector.vHealthController>().ChangeHealth(-200);
             InGameMenuDeathInfo.SetActive(true);
-            GetComponent<Animator>().SetBool("isDead", true);
         }
         if (current_hunger > 0)
         {
