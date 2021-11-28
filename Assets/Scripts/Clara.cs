@@ -139,7 +139,7 @@ public class Clara : MonoBehaviour
         {
             if(ItemToPickUp != null)
             {
-                ClaraAudio.PlayOneShot(PickUpSound, 1.0f);
+                ClaraAudio.PlayOneShot(PickUpSound, 0.5f);
                 if (ItemToPickUp.itemName == Item.ItemName.MetalSword)
                 {
                     MeleeWeaponMetalSword.SetActive(true);
@@ -197,7 +197,7 @@ public class Clara : MonoBehaviour
     {
         if (diff == 30)
         {
-            ClaraAudio.PlayOneShot(EatSound, 1.0f);
+            ClaraAudio.PlayOneShot(EatSound, 1.5f);
         }
         current_hunger += diff;
         if (current_hunger > max_hunger)

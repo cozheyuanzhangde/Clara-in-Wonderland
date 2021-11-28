@@ -30,6 +30,7 @@ TagManager:
   - CoverPoint
   - Interactable
   - AIAction
+  - Slime
   layers:
   - Default
   - TransparentFX
