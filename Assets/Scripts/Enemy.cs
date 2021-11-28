@@ -9,6 +9,8 @@ public class Enemy : MonoBehaviour
     GameObject items_spawner;
 
     GameObject Clara;
+    AudioSource SlimeAudio;
+    public AudioClip SlimeGetHit;
 
     void Start()
     {
@@ -16,6 +18,8 @@ public class Enemy : MonoBehaviour
         items_spawner = GameObject.Find("ItemsSpawner");
         max_health = 50.0f;
         current_health = max_health;
+        gameObject.AddComponent<AudioSource>();
+        SlimeAudio = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -25,12 +29,10 @@ public class Enemy : MonoBehaviour
             bool attackA = Clara.GetComponent<Invector.vCharacterController.vMeleeCombatInput>().animator.GetCurrentAnimatorStateInfo(Clara.GetComponent<Invector.vCharacterController.vMeleeCombatInput>().animator.GetLayerIndex("FullBody")).IsName("A");
             bool attackB = Clara.GetComponent<Invector.vCharacterController.vMeleeCombatInput>().animator.GetCurrentAnimatorStateInfo(Clara.GetComponent<Invector.vCharacterController.vMeleeCombatInput>().animator.GetLayerIndex("FullBody")).IsName("B");
             bool attackC = Clara.GetComponent<Invector.vCharacterController.vMeleeCombatInput>().animator.GetCurrentAnimatorStateInfo(Clara.GetComponent<Invector.vCharacterController.vMeleeCombatInput>().animator.GetLayerIndex("FullBody")).IsName("C");
-            Debug.Log(attackA);
-            Debug.Log(attackB);
-            Debug.Log(attackC);
             if (attackA || attackB || attackC)
             {
-                current_health -= 20.0f;
+                SlimeAudio.PlayOneShot(SlimeGetHit, 1.0f);
+                current_health -= 10.0f;
             }
             
         }

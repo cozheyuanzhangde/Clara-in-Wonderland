@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5651710098955073515}
   - component: {fileID: 5651710098955073510}
   - component: {fileID: 5651710098955073508}
+  - component: {fileID: 5046652716133303164}
   m_Layer: 0
   m_Name: Slime
   m_TagString: Untagged
@@ -101,6 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   max_health: 50
   current_health: 50
+  SlimeGetHit: {fileID: 0}
 --- !u!114 &5651710098955073510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,6 +138,21 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &5046652716133303164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5649828614579108734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1459d407397a61c4aa0baf21983feb32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  max_health: 0
+  current_health: 0
+  SlimeGetHit: {fileID: 8300000, guid: 70fdcb47105499946b2692d2bf9dc9de, type: 3}
 --- !u!1 &5650018802781169802
 GameObject:
   m_ObjectHideFlags: 0

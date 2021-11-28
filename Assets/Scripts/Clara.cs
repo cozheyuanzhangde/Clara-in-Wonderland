@@ -16,6 +16,10 @@ public class Clara : MonoBehaviour
     public HealthBar health_bar;
     public HungerBar hunger_bar;
     public ThirstBar thirst_bar;
+    public AudioClip ClaraGetHitSound;
+    public AudioClip DrinkSound;
+    public AudioClip EatSound;
+    public AudioClip PickUpSound;
 
     private Inventory inventory;
 
@@ -31,6 +35,7 @@ public class Clara : MonoBehaviour
     private GameObject SelectMode;
     private GameObject InGameMenu;
     private GameObject InGameMenuDeathInfo;
+    private AudioSource ClaraAudio;
     // Start is called before the first frame update
     void Start()
     {
@@ -60,12 +65,19 @@ public class Clara : MonoBehaviour
         MessageBox.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        ClaraAudio = GetComponent<AudioSource>();
     }
 
     private void FixedUpdate()
     {
         if (current_health <= 0)
         {
+            var slimes = GameObject.FindGameObjectsWithTag("Slime");
+            foreach (GameObject slime in slimes)
+            {
+                Destroy(slime.gameObject);
+            }
+            ThirdPersonCamera.GetComponent<Invector.vCamera.vThirdPersonCamera>().LockCamera = true;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             GetComponent<Invector.vHealthController>().ChangeHealth(-200);
@@ -127,6 +139,7 @@ public class Clara : MonoBehaviour
         {
             if(ItemToPickUp != null)
             {
+                ClaraAudio.PlayOneShot(PickUpSound, 1.0f);
                 if (ItemToPickUp.itemName == Item.ItemName.MetalSword)
                 {
                     MeleeWeaponMetalSword.SetActive(true);
@@ -160,6 +173,14 @@ public class Clara : MonoBehaviour
 
     public void ChangeHealthByDiff(float diff)
     {
+        if (diff == -10.0f)
+        {
+            ClaraAudio.PlayOneShot(ClaraGetHitSound, 1.0f);
+        }
+        if (diff == 50)
+        {
+            ClaraAudio.PlayOneShot(DrinkSound, 1.0f);
+        }
         current_health += diff;
         if (current_health > max_health)
         {
@@ -174,6 +195,10 @@ public class Clara : MonoBehaviour
 
     public void ChangeHungerByDiff(float diff)
     {
+        if (diff == 30)
+        {
+            ClaraAudio.PlayOneShot(EatSound, 1.0f);
+        }
         current_hunger += diff;
         if (current_hunger > max_hunger)
         {
@@ -188,6 +213,10 @@ public class Clara : MonoBehaviour
 
     public void ChangeThirstByDiff(float diff)
     {
+        if(diff == 30)
+        {
+            ClaraAudio.PlayOneShot(DrinkSound, 1.0f);
+        }
         current_thirst += diff;
         if (current_thirst > max_thirst)
         {

@@ -5,7 +5,6 @@ using UnityEngine;
 public class EnemyAttack : StateMachineBehaviour
 {
     GameObject Clara;
-    GameObject Slime;
 
     private void OnEnable()
     {
