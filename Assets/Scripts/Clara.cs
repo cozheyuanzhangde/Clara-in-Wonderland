@@ -114,6 +114,15 @@ public class Clara : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(GetComponent<Invector.vHealthController>().isDead == true)
+        {
+            current_health = 0;
+            health_bar.SetHealth(current_health);
+            ThirdPersonCamera.GetComponent<Invector.vCamera.vThirdPersonCamera>().LockCamera = true;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            InGameMenuDeathInfo.SetActive(true);
+        }
         if (Input.GetKeyDown(KeyCode.Escape)) {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
@@ -269,7 +278,7 @@ public class Clara : MonoBehaviour
             ItemToPickUp = new Item { itemName = Item.ItemName.SlimeMeat, number = 1 };
             ItemToDestory = other.gameObject;
         }
-        if (other.name.Contains("Water"))
+        if (other.name.Contains("Water_H"))
         {
             if (inventory.HasItem(new Item { itemName = Item.ItemName.EmptyJar, number = 1 }))
             {
@@ -311,7 +320,7 @@ public class Clara : MonoBehaviour
             ItemToPickUp = null;
             ItemToDestory = null;
         }
-        if (other.name.Contains("Water"))
+        if (other.name.Contains("Water_H"))
         {
             MessageBox.SetActive(false);
             InWater = false;
