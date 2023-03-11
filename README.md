@@ -1,2 +1,2 @@
 # Clara-in-Wonderland
-Open-world Adventure Game
+3D open-world adventure game
